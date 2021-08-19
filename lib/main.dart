@@ -10,7 +10,11 @@ class AppBuild extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(title: "Artikel App", home: AppHome());
+    return MaterialApp(
+      title: "Artikel App",
+      debugShowCheckedModeBanner: false,
+      home: AppHome(),
+    );
   }
 }
 

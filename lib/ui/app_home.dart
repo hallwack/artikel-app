@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:artikel_app/data/data_json.dart';
 
 /* class AppHome extends StatelessWidget {
   const AppHome({Key? key}) : super(key: key);
@@ -81,45 +82,65 @@ class _AppHomeState extends State<AppHome> {
           )
         ],
       ),
-      body: SafeArea(
+      body: Container(
         child: Column(
           children: [
-            Container(
-              margin: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
-              padding: EdgeInsets.only(left: 28),
-              decoration: BoxDecoration(
-                color: Colors.grey.shade300,
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: TextField(
-                decoration: InputDecoration(
-                  suffixIcon: Icon(Icons.search),
-                  border: InputBorder.none,
-                  hintText: 'Search',
-                  hintStyle: TextStyle(
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.w500,
+            Row(
+              children: [
+                Expanded(
+                  child: Container(
+                    margin: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                    padding: EdgeInsets.only(left: 28),
+                    decoration: BoxDecoration(
+                      color: Colors.grey.shade300,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: TextField(
+                      decoration: InputDecoration(
+                        suffixIcon: Icon(Icons.search),
+                        border: InputBorder.none,
+                        hintText: 'Search',
+                        hintStyle: TextStyle(
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
-              ),
+              ],
             ),
-            Container(
-              child: SizedBox(
-                height: 40.0,
-                child: ListView(
-                  padding: EdgeInsets.only(left: 24.0),
-                  scrollDirection: Axis.horizontal,
-                  children: [
-                    OutlinedButton(
-                      onPressed: () {},
-                      child: Text("INI BUTTON"),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(left: 12.0),
+                    child: Row(
+                      children: [
+                        Container(
+                          margin: EdgeInsets.symmetric(horizontal: 8.0),
+                          padding: EdgeInsets.all(10.0),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            border: Border.all(
+                              color: Colors.grey,
+                            ),
+                            color: Color(0xff414078),
+                          ),
+                          child: Text(
+                            "Lorem Ipsum Dolor Sit Amet",
+                            style: TextStyle(
+                              fontSize: 16.0,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                    OutlinedButton(
-                      onPressed: () {},
-                      child: Text("INI BUTTON"),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ],
