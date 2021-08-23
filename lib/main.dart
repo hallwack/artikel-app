@@ -1,5 +1,5 @@
+import 'package:artikel_app/ui/home_page.dart';
 import 'package:flutter/material.dart';
-import 'package:artikel_app/ui/app_home.dart';
 
 void main() {
   runApp(AppBuild());
@@ -13,7 +13,7 @@ class AppBuild extends StatelessWidget {
     return MaterialApp(
       title: "Artikel App",
       debugShowCheckedModeBanner: false,
-      home: AppHome(),
+      home: HomePage(),
     );
   }
 }

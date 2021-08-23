@@ -52,6 +52,8 @@ class _AppHomeState extends State<AppHome> {
   TextEditingController textController =
       TextEditingController(text: "Nilai Awal");
 
+  bool selectedCategory = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -82,69 +84,80 @@ class _AppHomeState extends State<AppHome> {
           )
         ],
       ),
-      body: Container(
-        child: Column(
-          children: [
-            Row(
+      body: ListView(
+        children: [
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+            padding: EdgeInsets.only(left: 28),
+            decoration: BoxDecoration(
+              color: Colors.grey.shade300,
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: TextField(
+              decoration: InputDecoration(
+                suffixIcon: Icon(Icons.search),
+                border: InputBorder.none,
+                hintText: 'Search',
+                hintStyle: TextStyle(
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ),
+          ),
+          Container(
+            height: 50,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
               children: [
-                Expanded(
-                  child: Container(
-                    margin: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
-                    padding: EdgeInsets.only(left: 28),
-                    decoration: BoxDecoration(
-                      color: Colors.grey.shade300,
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: TextField(
-                      decoration: InputDecoration(
-                        suffixIcon: Icon(Icons.search),
-                        border: InputBorder.none,
-                        hintText: 'Search',
-                        hintStyle: TextStyle(
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
+                Padding(
+                  padding: EdgeInsets.only(left: 14.0),
+                  child: Wrap(
+                    spacing: 8.0,
+                    children: List.generate(
+                      category.length,
+                      (index) {
+                        return GestureDetector(
+                          onTap: () {
+                            category[index].isSelected =
+                                !category[index].isSelected;
+                            setState(() {});
+                          },
+                          child: Chip(
+                            label: Text(category[index].name),
+                            backgroundColor: category[index].isSelected == true
+                                ? Color(0xff414078)
+                                : Colors.white,
+                            side: BorderSide(
+                              color: Colors.deepOrange,
+                              width: 2.0,
+                            ),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                          ),
+                        );
+                      },
                     ),
                   ),
                 ),
               ],
             ),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text("Most Popular"),
+              Row(
                 children: [
-                  Padding(
-                    padding: EdgeInsets.only(left: 12.0),
-                    child: Row(
-                      children: [
-                        Container(
-                          margin: EdgeInsets.symmetric(horizontal: 8.0),
-                          padding: EdgeInsets.all(10.0),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12),
-                            border: Border.all(
-                              color: Colors.grey,
-                            ),
-                            color: Color(0xff414078),
-                          ),
-                          child: Text(
-                            "Lorem Ipsum Dolor Sit Amet",
-                            style: TextStyle(
-                              fontSize: 16.0,
-                              fontWeight: FontWeight.w400,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                  SizedBox(
+                    height: 12,
                   ),
                 ],
               ),
-            ),
-          ],
-        ),
+            ],
+          ),
+        ],
       ),
     );
   }
