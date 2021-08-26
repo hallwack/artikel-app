@@ -1,3 +1,4 @@
+import 'package:artikel_app/ui/detail_page.dart';
 import 'package:artikel_app/ui/home_page.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +14,7 @@ class AppBuild extends StatelessWidget {
     return MaterialApp(
       title: "Artikel App",
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: DetailPage(),
     );
   }
 }

@@ -20,7 +20,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         elevation: 0,
-        backgroundColor: Colors.grey.shade100,
+        backgroundColor: Colors.white,
         actions: [
           Padding(
             padding: EdgeInsets.only(right: 18.0),
@@ -45,7 +45,7 @@ class _HomePageState extends State<HomePage> {
                 hintText: "Search...",
                 hintStyle: TextStyle(
                   fontSize: 20.0,
-                  fontWeight: FontWeight.w600,
+                  fontWeight: FontWeight.w400,
                   color: Colors.grey.shade500,
                 ),
                 border: InputBorder.none,
@@ -114,39 +114,114 @@ class _HomePageState extends State<HomePage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("More Posts"),
-                  Icon(Icons.arrow_forward_rounded),
+                  Padding(
+                    padding: EdgeInsets.only(left: 12),
+                    child: Text("More Posts",
+                        style: TextStyle(
+                            fontSize: 24, fontWeight: FontWeight.w600)),
+                  ),
+                  TextButton(
+                    onPressed: () {},
+                    child: Wrap(
+                      direction: Axis.horizontal,
+                      spacing: 8,
+                      crossAxisAlignment: WrapCrossAlignment.center,
+                      children: [
+                        Text("See More", style: TextStyle(fontSize: 18)),
+                        Icon(Icons.arrow_forward),
+                      ],
+                    ),
+                  ),
                 ],
               ),
-              Container(
-                child: Row(
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 12),
+                child: Column(
                   children: [
-                    Container(
-                      height: 150,
-                      width: 180,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: NetworkImage(
-                              'https://sportsnewsinstant.com/wp-content/uploads/2018/10/_103890241_liverpool_getty.jpg'),
-                          fit: BoxFit.cover,
-                        ),
-                        borderRadius: BorderRadius.circular(6.0),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black12,
-                            blurRadius: 7,
-                            spreadRadius: 2,
-                          ),
-                        ],
-                      ),
-                    ),
-                    Text("Judul"),
-                    Text("Like")
+                    ArticleCard(),
+                    ArticleCard(),
+                    ArticleCard(),
+                    ArticleCard(),
+                    ArticleCard(),
+                    ArticleCard(),
+                    ArticleCard(),
+                    ArticleCard(),
                   ],
                 ),
               )
             ],
           ),
+        ],
+      ),
+    );
+  }
+}
+
+class ArticleCard extends StatelessWidget {
+  const ArticleCard({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 4),
+      height: 100,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(6.0),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black12,
+            blurRadius: 3,
+          ),
+        ],
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Container(
+            height: 100,
+            width: 120,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: NetworkImage(
+                    'https://sportsnewsinstant.com/wp-content/uploads/2018/10/_103890241_liverpool_getty.jpg'),
+                fit: BoxFit.cover,
+              ),
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(6.0),
+                bottomLeft: Radius.circular(6.0),
+              ),
+            ),
+          ),
+          Flexible(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 8.0),
+              child: Text(
+                "Akhirnya Liverpool Udah Ga Puasa Lagi Gaes",
+                style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.grey.shade800),
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 4.0),
+            child: Wrap(
+              spacing: 8.0,
+              direction: Axis.horizontal,
+              crossAxisAlignment: WrapCrossAlignment.center,
+              children: [
+                Icon(
+                  Icons.favorite,
+                  color: Colors.red.shade700,
+                ),
+                Text("239", style: TextStyle(fontWeight: FontWeight.w600)),
+              ],
+            ),
+          )
         ],
       ),
     );

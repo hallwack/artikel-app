@@ -7,9 +7,21 @@ List category = [
   Category(name: "Entertainment", isSelected: false),
 ];
 
+List articles = [];
+
 class Category {
   String name;
   bool isSelected;
 
   Category({required this.name, required this.isSelected});
+}
+
+class Article {
+  String? title;
+  String? author;
+  int? likes;
+  String? post;
+  int? date;
+
+  Article({this.title, this.author, this.likes, this.post, this.date});
 }
